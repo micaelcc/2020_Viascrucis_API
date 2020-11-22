@@ -3,7 +3,7 @@ const Stories = mongoose.model('Stories');
 
 exports.listStories = async (req, res) => {
   try {
-    const data = await Stories.find({});
+    const data = await Stories.find({'approved': true});
     res.status(200).send(data);
   } catch (e) {
     res.status(500).send({message: 'Falha ao carregar as histórias.'});
@@ -31,7 +31,9 @@ exports.createStory = async (req, res) => {
       bornCity: req.body.bornCity,
       bornState: req.body.bornState,
       deadCity: req.body.deadCity,
-      deadState: req.body.deadState
+      deadState: req.body.deadState,
+
+      approved: req.body.approved
       
     });
 

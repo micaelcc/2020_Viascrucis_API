@@ -55,6 +55,8 @@ process.on('SIGINT', () => {
 // Load models
 const Stories = require('./models/stories');
 
+const AdminStories = require('./models/admin-stories');
+
 // Load models
 const Gallery = require('./models/gallery');
 
@@ -71,6 +73,9 @@ app.use('/gallery', galleryRoutes);
 
 const contactRoutes = require('./routes/contact-routes');
 app.use('/contact', contactRoutes);
+
+const adminStoriesRoutes = require('./routes/admin-stories-routes');
+app.use('/adminStories', adminStoriesRoutes);
 
 
 module.exports = app;

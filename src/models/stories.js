@@ -1,6 +1,6 @@
 
- const mongoose = require('mongoose');
- const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const schema = new Schema({
     firstName:{
@@ -63,6 +63,9 @@ const schema = new Schema({
     deadState:{
         type: String,
         required: true
+    },
+    approved:{
+        type: Boolean
     }
   },
   {

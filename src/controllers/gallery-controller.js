@@ -3,12 +3,15 @@ const Gallery = mongoose.model('Gallery');
 
 exports.sendImages = async (req, res) => {
   try {
-    const imagem = new Gallery({
-      image: req.body.image,
-      upvotes: req.body.upvotes
+    const image = new Gallery({
+      image_data: req.body.image,
+      description: req.body.description,
+      date: req.body.date,
+      views: req.body.views,
+      credit: req.body.credit
     });
-    console.log(imagem)
-    await imagem.save();
+    console.log(image)
+    await image.save();
 
     res.status(201).send({message: 'Imagem cadastrada com sucesso!'});
   } catch (e) {
@@ -25,11 +28,12 @@ exports.getImages = async (req, res) => {
   }
 };
 
-exports.addUpvote = async (req, res) => {
+exports.addView = async (req, res) => {
   try {
-    const data = await Gallery.findOne({'position': req.body.position});
+    const data = await Gallery.findOne({'_id': req.body._id});
     
-    data.upvotes++
+    data.views = req.body.views;
+    
 
     await data.save();
 

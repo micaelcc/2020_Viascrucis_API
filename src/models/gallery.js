@@ -3,14 +3,20 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
 
-    image:{
+    image_data:{
         type: String
     },
-    upvotes: {
+    description: {
+        type: String
+    },
+    date:{
+        type: Date
+    },
+    views: {
         type: Number
     },
-    position:{
-        type: Number
+    credit:{
+        type: String        
     }
 },
 
