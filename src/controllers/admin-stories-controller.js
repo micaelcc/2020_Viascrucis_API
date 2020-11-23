@@ -19,3 +19,17 @@ exports.deleteStory = async (req, res) => {
       res.status(500).send({message: 'Falha ao excluir história.'});
     }
   };
+
+exports.approveStory = async (req, res) => {
+    try {
+      const data = await Stories.findOne({'_id': req.body._id});
+
+      data.approved = true;
+
+      await data.save();
+
+      res.status(200).send(data);
+    } catch(e){
+      res.status(500).send({message: 'Falha ao aprovar/desaprovar história'});
+    }
+}
