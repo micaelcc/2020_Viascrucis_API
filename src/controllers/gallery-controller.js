@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const Gallery = mongoose.model('Gallery');
 
 exports.sendImages = async (req, res) => {
@@ -41,6 +41,37 @@ exports.addView = async (req, res) => {
   } catch (e) {
     res.status(500).send({message: 'Falha ao add upvote.'});
   }
+};*/
+const aws = require('aws-sdk');
+const s3 = new aws.S3();
+const mongoose = require('mongoose');
+const Gallery = mongoose.model('Gallery');
+ 
+exports.getImages = async (req, res) => {
+  const posts = await Gallery.find();
+  
+  return res.json(posts);
 };
 
- 
+
+exports.sendImages = async (req, res) => {
+  try{
+      const { originalname: name, size, key, location: url = ""} = req.file;
+
+      const post = new Gallery({
+          name,
+          size,
+          key,
+          url,
+          description: req.body.description,
+          views: req.body.views,
+          credits: req.body.credits
+      });
+      console.log(post)
+
+      await post.save();
+      return res.json(post);
+    } catch(e){
+        res.status(500).send({message: 'falha'});
+    }
+};
