@@ -42,3 +42,16 @@ exports.deleteImage = async (req, res) => {
 
   return res.send({message: 'Imagem excluida com sucesso.'});
 };
+
+exports.updateViewsImage = async (req, res) => {
+  try {
+    const image = await Gallery.findOne({'_id': req.body._id})
+
+    image.views++;
+
+    await image.save();
+    res.status(200).send(image);
+  }catch(e){
+    res.status(500).send({error: 'erro ao atualizar numero de views.'})
+  }
+}

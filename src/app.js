@@ -78,7 +78,7 @@ app.use('/contact', contactRoutes);
 const adminStoriesRoutes = require('./routes/admin-stories-routes');
 app.use('/adminStories', adminStoriesRoutes);
 
-const loginRoutes = require('./routes/login-routes');
-app.use('/login', loginRoutes);
+const adminUserRoutes = require('./routes/admin-users-routes');
+app.use('/admin', adminUserRoutes);
 
 module.exports = app;
