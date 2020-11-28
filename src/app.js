@@ -60,6 +60,7 @@ const AdminStories = require('./models/admin-stories');
 // Load models
 const Gallery = require('./models/gallery');
 
+const Login = require('./models/admin-user');
 
 // Load routes
 const indexRoutes = require('./routes/index-routes');
@@ -77,5 +78,7 @@ app.use('/contact', contactRoutes);
 const adminStoriesRoutes = require('./routes/admin-stories-routes');
 app.use('/adminStories', adminStoriesRoutes);
 
+const loginRoutes = require('./routes/login-routes');
+app.use('/login', loginRoutes);
 
 module.exports = app;

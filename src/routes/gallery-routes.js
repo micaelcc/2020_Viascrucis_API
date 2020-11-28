@@ -6,5 +6,6 @@ const multerConfig = require('../config/multer')
 
 router.get('/', galleryController.getImages);
 router.post('/', multer(multerConfig).single('file'),galleryController.sendImages);
-
+router.delete('/', galleryController.deleteImage);
+  
 module.exports = router;

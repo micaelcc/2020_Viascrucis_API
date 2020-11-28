@@ -20,4 +20,20 @@ const schema = new Schema({
 }
 );
 
+schema.pre("remove", function() {
+      return s3
+        .deleteObject({
+          Bucket: 'viascrucis-img',
+          Key: this.key
+        })
+        .promise()
+        .then(response => {
+          console.log(response.status);
+        })
+        .catch(response => {
+          console.log(response.status);
+        });
+    
+  });
+
 module.exports = mongoose.model("Gallery", schema);
