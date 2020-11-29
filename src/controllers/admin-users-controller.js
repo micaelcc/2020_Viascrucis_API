@@ -26,17 +26,6 @@ exports.login = async (req, res) => {
         
 };
 
-  exports.listAdmins = async (req, res) => {
-    try {
-      const data = await AdminUsers.find({});
-
-      console.log(data)
-      res.status(200).send(data);
-    } catch (e) {
-      res.status(500).send({message: 'Falha nas credenciais.'});
-    }
-  };
-
 exports.createAdminUser = async (req, res) => {
   try{
     const cryptPass = bcrypt.hashSync(req.body.password, 10)
