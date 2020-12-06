@@ -9,8 +9,8 @@ const schema = new Schema({
     key: String,
     url: String,
     createdAt:{
-        type: Date,
-        default: Date.now
+        type: String,
+        required: true
     },
     description: String,
     credits: String,

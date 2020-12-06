@@ -59,6 +59,10 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    createdAt: {
+        type: String,
+        required: true
+    },
     deadState:{
         type: String,
         required: true

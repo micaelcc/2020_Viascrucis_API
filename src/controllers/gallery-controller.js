@@ -12,6 +12,8 @@ exports.getImages = async (req, res) => {
 
 
 exports.sendImages = async (req, res) => {
+  var hj = new Date()
+  var data = String(hj.getDate()) + '/' + String(hj.getMonth() + 1) + '/' + String(hj.getFullYear());
   try{
 
       const { originalname: name, size, filename: key, location: url = ""} = req.file;
@@ -21,6 +23,7 @@ exports.sendImages = async (req, res) => {
           size,
           key,
           url,
+          createdAt: data,
           description: req.body.description ,
           views: req.body.views,
           credits: req.body.credits

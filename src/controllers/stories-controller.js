@@ -12,7 +12,9 @@ exports.listStories = async (req, res) => {
 
 // create
 exports.createStory = async (req, res) => {
-  console.log(req)
+  var hj = new Date()
+  var data = String(hj.getDate()) + '/' + String(hj.getMonth() + 1) + '/' + String(hj.getFullYear());
+
   try {
     const story = new Stories({
       firstName: req.body.firstName,
@@ -27,7 +29,7 @@ exports.createStory = async (req, res) => {
       anoNascimento: req.body.anoNascimento,
       textTribute: req.body.textTribute,
       epitafio: req.body.epitafio,
-      
+      createdAt: data,
       bornCity: req.body.bornCity,
       bornState: req.body.bornState,
       deadCity: req.body.deadCity,
