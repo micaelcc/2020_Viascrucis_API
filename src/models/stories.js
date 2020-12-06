@@ -13,7 +13,7 @@ const schema = new Schema({
         required: true
     },
     telefone:{
-        type: Number,
+        type: String,
         required: true
     },
     email: {
@@ -46,7 +46,6 @@ const schema = new Schema({
     },
     epitafio:{
         type: String,
-        required: true
     },
     bornCity:{
         type: String,
