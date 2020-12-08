@@ -1,6 +1,8 @@
+require("dotenv").config();
+
 module.exports = {
-    host: "smtp.gmail.com",
+    host: "smtp.umbler.com",
     port: 587,
-    user: "contatoviascrucis@gmail.com",
-    pass: "viascrucisproject"
+    user: "contato@viascrucis.com.br",
+    pass: process.env.SMTP_PASS
 };

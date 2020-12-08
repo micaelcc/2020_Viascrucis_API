@@ -9,10 +9,7 @@ const transporter = nodemailer.createTransport({
   auth:{
     user: SMTP_CONFIG.user,
     pass: SMTP_CONFIG.pass,
-  },
-  tls:{
-    rejectUnauthorized: false,
-  },
+  }
 });
 
 exports.sendEmail = async (req, res) => {
@@ -20,14 +17,14 @@ exports.sendEmail = async (req, res) => {
     text: `De: ${req.body.email} \n\n${req.body.message}`,
     subject: 'Contato Vias Crucis',
     from: `${req.body.name} ${req.body.lastName} <${req.body.email}>`,
-    to: 'contatoviascrucis@gmail.com',
+    to: 'contato@viascrucis.com.br',
   }, (error) => {
     if(error){
-      return res.status(400).send('deu erro');
+      return res.status(400).send({message: 'Error'});
     }
     return res.status(200).send(req.body);
   }
-
+  
 );
 
   console.log(mailSent);
