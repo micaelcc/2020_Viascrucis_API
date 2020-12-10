@@ -49,7 +49,7 @@ exports.createStory = async (req, res) => {
   }
 };
  
-exports.storiesApprove = async (req, res) => {
+exports.listStoriesAwait = async (req, res) => {
   try {
     const data = await Stories.find({'approved': false});
     res.status(200).send(data);

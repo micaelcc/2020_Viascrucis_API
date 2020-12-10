@@ -3,7 +3,7 @@ const BookView = mongoose.model('Book')
 
 exports.showViews = async (req, res) => {
     try{
-        const get = await BookView.find();
+        const get = await BookView.findOne({});
         return res.json(get);
     }catch(e){
         return res.status(500).send({error: 'Nao foi possivel acessar views do livro.'})
