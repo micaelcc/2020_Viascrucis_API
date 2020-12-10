@@ -23,7 +23,7 @@ const schema = new Schema({
 schema.pre("remove", function() {
       return s3
         .deleteObject({
-          Bucket: 'viascrucis-img',
+          Bucket: 'viascrucis',
           Key: this.key
         })
         .promise()

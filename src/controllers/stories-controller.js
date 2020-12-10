@@ -25,7 +25,7 @@ exports.createStory = async (req, res) => {
       
       firstNameHonor: req.body.firstNameHonor,
       lastNameHonor: req.body.lastNameHonor,
-      idade: req.body.idade,
+      anoFalecimento: req.body.anoFalecimento,
       anoNascimento: req.body.anoNascimento,
       textTribute: req.body.textTribute,
       epitafio: req.body.epitafio,
@@ -45,8 +45,39 @@ exports.createStory = async (req, res) => {
 
     res.status(201).send({message: 'História cadastrada com sucesso!'});
   } catch (e) {
-    res.status(500).send({message: 'Falha ao cadastrar a história.'});
+    res.status(500).send({error: 'Falha ao cadastrar a história.'});
   }
 };
  
- 
+exports.storiesApprove = async (req, res) => {
+  try {
+    const data = await Stories.find({'approved': false});
+    res.status(200).send(data);
+  } catch (e) {
+    res.status(500).send({error: 'Falha ao carregar as histórias.'});
+  }
+};
+
+exports.deleteStory = async (req, res) => {
+    try {
+      const data = await Stories.deleteOne({'_id': req.body._id});
+      
+      res.status(200).send(data);
+    } catch (e) {
+      res.status(500).send({error: 'Falha ao excluir história.'});
+    }
+  };
+
+exports.approveStory = async (req, res) => {
+    try {
+      const data = await Stories.findOne({'_id': req.body._id});
+
+      data.approved = true;
+
+      await data.save();
+
+      res.status(200).send(data);
+    } catch(e){
+      res.status(500).send({error: 'Falha ao aprovar/desaprovar história'});
+    }
+}

@@ -31,7 +31,7 @@ exports.sendImages = async (req, res) => {
       
       return res.status(200).send(post);
     } catch(e){
-        res.status(500).send({message: 'falha'});
+        res.status(500).send({error: 'Falha ao enviar imagem.'});
     }
 };
 
@@ -55,6 +55,6 @@ exports.updateViewsImage = async (req, res) => {
     await image.save();
     res.status(200).send(image);
   }catch(e){
-    res.status(500).send({error: 'erro ao atualizar numero de views.'})
+    res.status(500).send({error: 'Erro ao atualizar numero de views.'})
   }
 }

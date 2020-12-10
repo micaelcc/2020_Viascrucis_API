@@ -8,7 +8,7 @@ const multerS3 = require('multer-s3');
 const storageTypes = {
     s3: multerS3({
         s3: new aws.S3(),
-        bucket: 'viascrucis-img',
+        bucket: 'viascrucis',
         contentType: multerS3.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: (rec, file, cb) => {

@@ -6,14 +6,6 @@ require('dotenv').config();
 // App
 const app = express();
 
-/*app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.header("Access-Control-Allow-Methods", 'GET,PUT, POST, DELETE');
-    app.use(cors());
-    next();
-});*/
-
 app.use(cors())
 
 app.use(express.json());
@@ -55,12 +47,11 @@ process.on('SIGINT', () => {
 // Load models
 const Stories = require('./models/stories');
 
-const AdminStories = require('./models/admin-stories');
-
-// Load models
 const Gallery = require('./models/gallery');
 
-const Login = require('./models/admin-user');
+const UserAdmin = require('./models/admin-user');
+
+const BookViews = require('./models/book-views');
 
 // Load routes
 const indexRoutes = require('./routes/index-routes');
@@ -75,10 +66,10 @@ app.use('/gallery', galleryRoutes);
 const contactRoutes = require('./routes/contact-routes');
 app.use('/contact', contactRoutes);
 
-const adminStoriesRoutes = require('./routes/admin-stories-routes');
-app.use('/adminStories', adminStoriesRoutes);
+const userAdminRoutes = require('./routes/admin-users-routes');
+app.use('/admin', userAdminRoutes);
 
-const adminUserRoutes = require('./routes/admin-users-routes');
-app.use('/admin', adminUserRoutes);
+const bookViewsRoutes = require('./routes/book-views-routes');
+app.use('/book', bookViewsRoutes);
 
 module.exports = app;

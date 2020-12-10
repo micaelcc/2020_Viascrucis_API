@@ -32,12 +32,12 @@ const schema = new Schema({
         type: String,
         required: true
     },
-    idade:{
-        type: Number,
+    anoFalecimento:{
+        type: String,
         required: true
     },
     anoNascimento:{
-        type: Number,
+        type: String,
         required: true
     },
     textTribute:{

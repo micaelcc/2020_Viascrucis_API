@@ -20,7 +20,7 @@ exports.sendEmail = async (req, res) => {
     to: 'contato@viascrucis.com.br',
   }, (error) => {
     if(error){
-      return res.status(400).send({message: 'Error'});
+      return res.status(400).send({error: 'Nao foi possivel enviar o email.'});
     }
     return res.status(200).send(req.body);
   }
