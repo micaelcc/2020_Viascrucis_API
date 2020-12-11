@@ -5,7 +5,7 @@ const login = require('../config/login')
 
 router.get('/', storiesController.listStories);
 router.post('/', storiesController.createStory);
-router.get('/await', storiesController.listStoriesAwait);
+router.get('/await',login, storiesController.listStoriesAwait);
 router.put('/', login, storiesController.approveStory);
 router.delete('/', login, storiesController.deleteStory);
 

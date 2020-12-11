@@ -16,7 +16,7 @@ exports.login = async (req, res) => {
             const token = jwt.sign(
               {id_user: adminUser._id}, 
               process.env.SECRET, 
-              {expiresIn: "3h"}
+              {expiresIn: "3m"}
             );
             return res.status(200).send({token, auth: true})
           }
@@ -42,4 +42,15 @@ exports.createAdminUser = async (req, res) => {
   }
 
   
+}
+
+exports.verifyToken = async (req, res) => {
+  try{
+    const token = req.headers.authorization.split(' ')[1];
+    const decode = jwt.verify(token, process.env.SECRET);
+    req.usuario = decode;
+    res.status(200).send({auth: true});
+  }catch(e){
+    res.status(401).send({error: 'Falha na autorização'})
+  }
 }

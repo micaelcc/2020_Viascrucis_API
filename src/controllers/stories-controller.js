@@ -61,8 +61,8 @@ exports.listStoriesAwait = async (req, res) => {
 exports.deleteStory = async (req, res) => {
     try {
       const data = await Stories.deleteOne({'_id': req.body._id});
-      
-      res.status(200).send(data);
+
+      res.status(200).send({message: 'Historia reprovada.'});
     } catch (e) {
       res.status(500).send({error: 'Falha ao excluir história.'});
     }

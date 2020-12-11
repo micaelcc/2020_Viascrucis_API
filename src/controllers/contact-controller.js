@@ -14,10 +14,11 @@ const transporter = nodemailer.createTransport({
 
 exports.sendEmail = async (req, res) => {
   const mailSent = transporter.sendMail({
-    text: `De: ${req.body.email} \n\n${req.body.message}`,
+    text: `${req.body.message}`,
     subject: 'Contato Vias Crucis',
     from: `${req.body.name} ${req.body.lastName} <${req.body.email}>`,
     to: 'contato@viascrucis.com.br',
+    replyTo: req.body.email,
   }, (error) => {
     if(error){
       return res.status(400).send({error: 'Nao foi possivel enviar o email.'});
@@ -26,6 +27,5 @@ exports.sendEmail = async (req, res) => {
   }
   
 );
-
   console.log(mailSent);
 }

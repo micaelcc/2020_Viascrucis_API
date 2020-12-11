@@ -11,6 +11,16 @@ app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+/*app.get('*', (req, res, next) => {
+    if (req.headers['x-forwarded-proto'] != 'https') {
+        // check if the header returns HTTP or HTTPS
+        res.redirect("https://" + req.headers.host + req.url);
+        // redirects to HTTPS
+    } else {
+        next();
+        // continues executing the file
+    }
+});*/
 // Database
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {
     useUnifiedTopology: true,

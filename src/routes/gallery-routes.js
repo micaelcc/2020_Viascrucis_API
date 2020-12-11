@@ -6,7 +6,7 @@ const multerConfig = require('../config/multer')
 const login = require('../config/login')
 
 router.get('/', galleryController.getImages);
-router.post('/', multer(multerConfig).single('file'),galleryController.sendImages);
+router.post('/', login, multer(multerConfig).single('file'),galleryController.sendImages);
 router.delete('/', login, galleryController.deleteImage);
 router.put('/', galleryController.updateViewsImage);
   
